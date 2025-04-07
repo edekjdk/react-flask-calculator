@@ -1,4 +1,4 @@
-class Expression_prossesor:
+class Expression_processor:
     def __init__(self, expression: str):
         self.expression = expression.strip()
         self.mode = self.detect_mode()
@@ -18,6 +18,3 @@ class Expression_prossesor:
             return self.expression[2:-1]
         else:
             return self.expression
-
-
-test = Expression_prossesor("p(123)")
