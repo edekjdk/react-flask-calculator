@@ -24,6 +24,12 @@ class MathEngine:
         return self.result
 
     def differentiate(self, expression: str) -> str:
+        self.sympy_expression = sy.sympify(expression)
+        self.derivative = sy.diff(self.sympy_expression)
+        self.latex_output = sy.latex(self.derivative)
+        self.result = {"output": self.derivative, "latex_output": self.latex_output}
+        return self.result
+
         return "differentiate {}".format(expression)
 
     def plot(self, expression: str) -> str:

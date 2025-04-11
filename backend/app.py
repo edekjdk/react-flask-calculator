@@ -21,7 +21,6 @@ def math(userInput):
             "latex_output": str(latex_output),
         }
     )
-    # return "{}".format(type(output))
 
 
 if __name__ == "__main__":
