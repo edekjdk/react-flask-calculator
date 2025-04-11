@@ -11,7 +11,17 @@ def math(userInput):
     processor = Expression_processor(userInput)
     engine = MathEngine(processor.get_inner_expression(), processor.mode)
     result = engine.evaluate()
-    return jsonify({"input": userInput, "output": result})
+    output = result["output"]
+    latex_output = result["latex_output"]
+
+    return jsonify(
+        {
+            "input": str(userInput),
+            "output": str(output),
+            "latex_output": str(latex_output),
+        }
+    )
+    # return "{}".format(type(output))
 
 
 if __name__ == "__main__":

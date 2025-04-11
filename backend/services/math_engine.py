@@ -1,3 +1,6 @@
+import sympy as sy
+
+
 class MathEngine:
     def __init__(self, inner_expression: str, mode: str):
         self.inner_expression = inner_expression
@@ -13,8 +16,12 @@ class MathEngine:
         else:
             return self.calculate(self.inner_expression)
 
-    def integrate(self, expression: str) -> str:
-        return "integrate {}".format(expression)
+    def integrate(self, expression) -> str:
+        self.sympy_expression = sy.sympify(expression)
+        self.integral = sy.integrate(self.sympy_expression)
+        self.latex_output = sy.latex(self.integral)
+        self.result = {"output": self.integral, "latex_output": self.latex_output}
+        return self.result
 
     def differentiate(self, expression: str) -> str:
         return "differentiate {}".format(expression)
