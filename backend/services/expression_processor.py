@@ -1,6 +1,6 @@
 class Expression_processor:
     def __init__(self, expression: str):
-        self.expression = expression.strip().replace(" ", "")
+        self.expression = self.prepare_expression(expression)
         self.mode = self.detect_mode()
 
     def detect_mode(self) -> str:
@@ -22,3 +22,9 @@ class Expression_processor:
             return self.expression[self.expression.index("(") + 1 : -1]
         else:
             return self.expression
+
+    def prepare_expression(self, expression):
+        self.prepared_expression = (
+            expression.strip().replace(" ", "").replace("^", "**")
+        )
+        return self.prepared_expression

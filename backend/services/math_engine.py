@@ -17,8 +17,9 @@ class MathEngine:
             return self.calculate(self.inner_expression)
 
     def integrate(self, expression) -> str:
+        x = sy.Symbol("x")
         self.sympy_expression = sy.sympify(expression)
-        self.integral = sy.integrate(self.sympy_expression)
+        self.integral = sy.integrate(self.sympy_expression, x)
         self.latex_output = sy.latex(self.integral)
         self.result = {
             "output": str(self.integral),
