@@ -13,12 +13,14 @@ def math(userInput):
     result = engine.evaluate()
     output = result["output"]
     latex_output = result["latex_output"]
+    image_output = result["image_output"]
 
     return jsonify(
         {
-            "input": str(userInput),
-            "output": str(output),
-            "latex_output": str(latex_output),
+            "input": userInput,
+            "output": output,
+            "image_output": image_output,
+            "latex_output": latex_output,
         }
     )
 

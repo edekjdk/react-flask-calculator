@@ -20,17 +20,23 @@ class MathEngine:
         self.sympy_expression = sy.sympify(expression)
         self.integral = sy.integrate(self.sympy_expression)
         self.latex_output = sy.latex(self.integral)
-        self.result = {"output": self.integral, "latex_output": self.latex_output}
+        self.result = {
+            "output": str(self.integral),
+            "latex_output": str(self.latex_output),
+            "image_output": None,
+        }
         return self.result
 
     def differentiate(self, expression: str) -> str:
         self.sympy_expression = sy.sympify(expression)
         self.derivative = sy.diff(self.sympy_expression)
         self.latex_output = sy.latex(self.derivative)
-        self.result = {"output": self.derivative, "latex_output": self.latex_output}
+        self.result = {
+            "output": str(self.derivative),
+            "latex_output": str(self.latex_output),
+            "image_output": None,
+        }
         return self.result
-
-        return "differentiate {}".format(expression)
 
     def plot(self, expression: str) -> str:
         return "plot {}".format(expression)
